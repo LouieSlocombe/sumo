@@ -42,7 +42,7 @@ dependencies = [
   "phonopy>=2.7.0",
   "matplotlib>=3.2.0",
   "seekpath",
-  "castepxbin<1.0",
+  "castepxbin>=0.3.1",
   "colormath",
 ]
 
