@@ -6,6 +6,7 @@ Module containing helper functions for calculating band effective masses.
 """
 
 import numpy as np
+from numpy.polynomial import Polynomial
 from scipy.constants import physical_constants
 from scipy.optimize import curve_fit
 
@@ -134,8 +135,9 @@ def fit_effective_mass(distances, energies, parabolic=True):
         float: The effective mass in units of electron rest mass, :math:`m_0`.
     """
     if parabolic:
-        fit = np.polyfit(distances, energies, 2)
-        c = 2 * fit[0]  # curvature therefore 2 * the exponent on the ^2 term
+        # convert() gives coefficients in the unscaled basis, lowest order first
+        fit = Polynomial.fit(distances, energies, 2).convert()
+        c = 2 * fit.coef[2]  # curvature therefore 2 * the exponent on the ^2 term
 
     else:
         # Use non parabolic description of the bands
