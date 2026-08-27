@@ -243,8 +243,7 @@ class QuestaalInit:
                 spcgrp_number = 0
             if 167 < spcgrp_number < 195:
                 logging.info(
-                    "Lattice angle GAMMA not given, "
-                    "hexagonal space group, assume 120"
+                    "Lattice angle GAMMA not given, hexagonal space group, assume 120"
                 )
                 self.lattice["GAMMA"] = 120
             else:
