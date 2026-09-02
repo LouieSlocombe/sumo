@@ -286,7 +286,7 @@ def _get_parser():
         "-c",
         "--code",
         default="vasp",
-        help='Electronic structure code (default: vasp)."questaal" also supported.',
+        help='Electronic structure code (default: vasp). "questaal" also supported.',
     )
     parser.add_argument(
         "-d",
