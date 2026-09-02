@@ -135,8 +135,9 @@ def fit_effective_mass(distances, energies, parabolic=True):
         float: The effective mass in units of electron rest mass, :math:`m_0`.
     """
     if parabolic:
-        # convert() gives coefficients in the unscaled basis, lowest order first
-        fit = Polynomial.fit(distances, energies, 2).convert()
+        # domain == window disables numpy's rescaling, so coef are in the raw
+        # distance basis, lowest order first
+        fit = Polynomial.fit(distances, energies, 2, domain=[-1, 1], window=[-1, 1])
         c = 2 * fit.coef[2]  # curvature therefore 2 * the exponent on the ^2 term
 
     else:
